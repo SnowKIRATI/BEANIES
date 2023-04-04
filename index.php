@@ -7,6 +7,7 @@ $bonnets = [
 ]
 ?>
 
+function priceTTC
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +21,9 @@ $bonnets = [
         table, th, td{
             border : 1px solid green;
         }
+        .colo{
+            color: blue;
+        }
     </style>
 </head>
 <body>
@@ -28,22 +32,34 @@ $bonnets = [
     <table>
         <th>Bennets</th>
         <th>Price</th>
+        <th>Price TTC</th>
         <th>Details</th>
+        <th>Test</th>
                 <?php 
                  foreach ($bonnets as $i => $bonnet){ ?>
          <tr> 
             <td> 
                 <?php echo $bonnet[0]; ?>
             </td>
-            <td>
-                <?php echo $bonnet[1] ." "."€"; 
-                ?>
+            <td <?php if ($bonnet[1] <= 12) { ?> class="colo" <?php } ?>>
+                 <?php echo $bonnet[1] ." "."€"; ?>
+            
+            </td>
+            <td <?php if ($bonnet[1] <= 12) { ?> class="colo" <?php } ?>>
+                 <?php echo $bonnet[1] ." "."€"; ?>
+            
             </td>
             <td>
                 <?php echo $bonnet[2] ; 
-            }?>
+            ?>
+            </td>
+
+            <td>
+                <?php echo $bonnet[1] ." "."€"; ?>
             </td>
          </tr>
+
+         <?php } ?>
     </table>
 
 
