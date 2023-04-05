@@ -1,13 +1,18 @@
 <?php
 $bonnets = [
     ["Bonnet en laine",10,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a leo diam. Quisque lorem orci, accumsan quis dolor sed, gravida."],
-    ["Bonnet en laine bio","14","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a leo diam. Quisque lorem orci, accumsan quis dolor sed, gravida."],
+    ["Bonnet en laine bio",14,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a leo diam. Quisque lorem orci, accumsan quis dolor sed, gravida."],
     ["Bonnet en laine et cachemire",20,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a leo diam. Quisque lorem orci, accumsan quis dolor sed, gravida."],
     ["Bonnet arc-en-ciel",12,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a leo diam. Quisque lorem orci, accumsan quis dolor sed, gravida."],
-]
+];
+
+function priceHT(float $price): float
+{
+    return round($price / 1.2,2);
+}
+
 ?>
 
-function priceTTC
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +26,10 @@ function priceTTC
         table, th, td{
             border : 1px solid green;
         }
-        .colo{
+        .coloV{
+            color: green;
+        }
+        .coloB{
             color: blue;
         }
     </style>
@@ -31,7 +39,7 @@ function priceTTC
 
     <table>
         <th>Bennets</th>
-        <th>Price</th>
+        <th>PriceHT</th>
         <th>Price TTC</th>
         <th>Details</th>
         <th>Test</th>
@@ -41,11 +49,13 @@ function priceTTC
             <td> 
                 <?php echo $bonnet[0]; ?>
             </td>
-            <td <?php if ($bonnet[1] <= 12) { ?> class="colo" <?php } ?>>
-                 <?php echo $bonnet[1] ." "."€"; ?>
+            <td>
+                 <?php echo priceHT($bonnet[1]) ." "."€"; ?>
             
             </td>
-            <td <?php if ($bonnet[1] <= 12) { ?> class="colo" <?php } ?>>
+            <td <?php if ($bonnet[1] <= 12) {?> class="coloV" <?php } 
+                else {?> class="coloB" <?php }?> >
+                    
                  <?php echo $bonnet[1] ." "."€"; ?>
             
             </td>
