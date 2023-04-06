@@ -1,6 +1,13 @@
 <?php
+
+session_start();
+
 require_once 'variables.php';
 require_once 'fonction.php';
+
+if (!isset($pageName)){
+    $pageName = "Welcome";
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,12 +44,50 @@ require_once 'fonction.php';
                      <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                      </li>
-                     
-                 </ul>
-                <form class="d-flex">
+                     <li class="nav-item">
+                        <a class="nav-link active" href="list.php">Produits</a>
+                     </li>
+                        <?php
+                            if (isset($_SESSION['username'])) {
+                        ?>        
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="login.php"> <?= ($_SESSION["username"]); ?></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="logout.php">Logout</a>
+                                </li>
+                        <?php 
+                        } else {
+                        ?>
+                            <li class="nav-item">
+                               <a class="nav-link active" href="login.php">Connection</a>
+                            </li>
+                        <?php    
+                        }
+                        ?>
+                 <!-- <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                </form> -->
+                 </ul>
             </div>
         </div>
     </nav>
+    <?php
+        if (isset($_GET['login']) && $_GET['login']== "success"){
+    ?>        
+            <div class="alert alert-primary" role="alert">
+              You are connected!
+            </div>
+    <?php    
+    }
+    ?>
+    <?php
+        if (isset($_GET['logout']) && $_GET['logout']== "success"){
+    ?>        
+            <div class="alert alert-primary" role="alert">
+              You are not connected
+            </div>
+    <?php    
+    }
+    ?>

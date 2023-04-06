@@ -1,6 +1,6 @@
 
         <?php
-        include'includes/header.php';
+        include 'includes/header.php';
         ?>
         <div class="d-flex justify-content-center" >
         <?php
@@ -27,5 +27,5 @@
                 <a href="list.php" class="btn btn-primary">All produits</a>
         </div>
 <?php
-        include'includes/footer.php';
+        include 'includes/footer.php';
 ?>

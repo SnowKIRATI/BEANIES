@@ -2,7 +2,7 @@
 <?php
     $pageName = "All our bonnets";
     
-    include'includes/header.php';
+    include 'includes/header.php';
 ?>
     <table>
         <th>Bennets</th>
@@ -17,5 +17,5 @@
     </table>
     
 <?php
-        include'includes/footer.php';
+        include 'includes/footer.php';
 ?>
