@@ -5,4 +5,8 @@
         ["Bonnet en laine et cachemire",20,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a leo diam. Quisque lorem orci, accumsan quis dolor sed, gravida.","https://www.montparel.com/12130-large_default/beechfield-bf045-bonnet-avec-rabat.jpg"],
         ["Bonnet arc-en-ciel",12,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a leo diam. Quisque lorem orci, accumsan quis dolor sed, gravida.", "https://www.montparel.com/12175-large_default/beechfield-bf045-bonnet-avec-rabat.jpg"],
     ];
+
+    $passwordObligatoire = 'hello';
+
+
 ?>
