@@ -6,13 +6,13 @@
       $erreur = [];
     
     if (isset($_POST['username'])){
-      $username = trim($_POST['username']);
-      $password = trim($_POST['password']);
+      $username = ($_POST['username']);
+      $password = ($_POST['password']);
       
       if (empty($password)){
         $erreur[] = 'Password incorrect';
 
-      } elseif ($password != $passwordObligatoire){
+      } elseif ($password != $passwordCorrect){
         $erreur[] = 'Password must have special characters is hello';
       }
 
@@ -22,7 +22,7 @@
       if (empty($erreur)){
         $_SESSION['username'] = $_POST['username'];
 
-        header('location: index.php?login=success');
+        header('location: ?login=success');
     }
 }    
 ?>
