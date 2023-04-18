@@ -2,8 +2,8 @@
 $wrong = [];
 
 if (isset($_POST['email'])) {
-    $email = trim($_POST['email']);
-    $message = trim($_POST['message']);
+    $email = ($_POST['email']);
+    $message = ($_POST['message']);
 
     if (empty($email)) {
         $wrong[] = 'Email empty, please add your email.';
