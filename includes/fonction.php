@@ -4,7 +4,7 @@ function priceHT(float $price): float
     return round($price / 1.2,2);
 }
 
-function showBonnet(array $bonnet): void 
+function showBonnet(int $id, array $bonnet): void 
 {
     ?>
     <tr> 
@@ -24,9 +24,11 @@ function showBonnet(array $bonnet): void
        ?>
        </td>
 
-       <!-- <td>
-           <?php echo $bonnet[1] ." "."€"; ?>
-       </td> -->
+       <td>
+           <a href="?page=cart&id=<?= $id; ?>" class="btn btn-primary">
+            Add to my basket
+           </a>
+       </td>
     </tr>
 
     <?php  

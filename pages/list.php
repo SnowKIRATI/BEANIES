@@ -2,20 +2,17 @@
 <?php
     $pageName = "All our bonnets";
     
-    include 'includes/header.php';
 ?>
     <table>
         <th>Bennets</th>
         <th>PriceHT</th>
         <th>Price TTC</th>
         <th>Details</th>
-        <!-- <th>Test</th> -->
+        <th>Action</th>
+
                 <?php 
-                 foreach ($bonnets as $bonnet){ 
-                    showBonnet($bonnet);
+                 foreach ($bonnets as $key => $bonnet){ 
+                    showBonnet($key, $bonnet);
                   } ?>
     </table>
     
-<?php
-        include 'includes/footer.php';
-?>

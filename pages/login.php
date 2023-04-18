@@ -3,15 +3,40 @@
 
        require_once 'includes/header.php';
     //    require_once include'includes/header.php?login=success';
+      $erreur = [];
     
     if (isset($_POST['username'])){
-        $_SESSION['username'] = $_POST['username'];
-        
-        header('location: index.php?login=success');
-    }
+      $username = ($_POST['username']);
+      $password = ($_POST['password']);
+      
+      if (empty($password)){
+        $erreur[] = 'Password incorrect';
 
-    // var_dump($_POST);
+      } elseif ($password != $passwordCorrect){
+        $erreur[] = 'Password must have special characters is hello';
+      }
+
+      if (empty($username)){
+        $erreur[] = 'Username empty';
+      }
+      if (empty($erreur)){
+        $_SESSION['username'] = $_POST['username'];
+
+        header('location: ?login=success');
+    }
+}    
 ?>
+    <?php
+    foreach ($erreur as $erreur) { 
+    ?>
+      <div class="alert alert-danger" role="alert">
+      <?= $erreur; ?>        
+      </div>
+    <?php  
+    }
+?>
+
+    <!-- // var_dump($_POST); -->
     <form action="" method="post">
     
             <div class="mb-3">
