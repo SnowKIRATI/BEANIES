@@ -29,6 +29,11 @@ if (isset($_GET['id'])) {
         $cart[$id]++;
     }
 
+    $empty = 'clean';
+    if (isset($_GET['empty'])){
+        $cart=[];
+    }
+
     $_SESSION['cart'] = $cart;
 }
 ?>
@@ -84,6 +89,9 @@ if (isset($_GET['id'])) {
         </tr>
     </tbody>
 </table>
+<div>
+        <a href="?page=cart&id=<?= $id; ?>&empty=clean" class="btn btn-primary">Empty Basket</a>
+</div>
 
 <!-- // var_dump($cart);
 // var_dump($_SESSION['cart']); -->

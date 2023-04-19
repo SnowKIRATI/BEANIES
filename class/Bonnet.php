@@ -6,6 +6,8 @@ class Bonnet
     protected float $price;
     protected string $description;
     protected string $img;
+    protected string $size;
+    protected string $material;
 
     // Name
     public function getName(): string
@@ -39,6 +41,7 @@ class Bonnet
         $this->description = $description;
         return $this;
     }
+
     // Img
     public function getImg(): string
     {
@@ -49,6 +52,29 @@ class Bonnet
         $this->img = $img;
         return $this;
     }
+
+    // Size
+    public function getSize(): string
+    {
+        return $this->size;
+    }
+    public function setSize(string $size): self
+    {
+        $this->size = $size;
+        return $this;
+    }
+
+    // Material
+    public function getMaterial(): string
+    {
+        return $this->material;
+    }
+    public function setMaterial(string $material): self
+    {
+        $this->material = $material;
+        return $this;
+    }
+    
 
 
 }
