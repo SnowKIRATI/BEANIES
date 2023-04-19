@@ -33,15 +33,13 @@ if (isset($_GET['id'])) {
 }
 ?>
 <table class="table">
-    <thead>
         <tr>
-            <th scope="row">ID</th>
-            <th scope="row">Name</th>
-            <th scope="row">Price per pice</th>
-            <th scope="row">Quantity</th>
-            <th scope="row">Price</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price per pice</th>
+            <th>Quantity</th>
+            <th>Price</th>
         </tr>
-    </thead>
     <tbody>
         <?php
 
@@ -49,7 +47,7 @@ if (isset($_GET['id'])) {
         $quantity = 0.0;
         foreach ($_SESSION['cart'] as $id => $quantity) {
             $bonnet = $bonnets[$id];
-            $price = $bonnet[1] * $quantity;
+            $price = $bonnet->getPrice() * $quantity;
             $total += $price;
 
             ?>
@@ -58,19 +56,19 @@ if (isset($_GET['id'])) {
                     <?= $id ?>
                 </td>
                 <td>
-                    <?= $bonnet[0]; ?>
+                    <?= $bonnet->getName(); ?>
                 </td>
                 <td>
-                    <?= number_format($bonnet[1], 2, ',', ''); ?>€
+                    <?= number_format($bonnet->getPrice(), 2, ',', ''); ?>€
                 </td>
                 <td>
 
-                    <a href="?page=cart&id=<?= $id; ?>">+</a>
-                    <?= number_format($quantity); ?>
                     <a href="?page=cart&id=<?= $id; ?>&mode=minus">-</a>
+                    <?= number_format($quantity); ?>
+                    <a href="?page=cart&id=<?= $id; ?>">+</a>
                 </td>
                 <td>
-                    <?= number_format($price, 2, ',', ''); ?>€
+                    <?= number_format($bonnet->getPrice(), 2, ',', ''); ?>€
                 </td>
             </tr>
             <?php

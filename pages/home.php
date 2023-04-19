@@ -1,27 +1,31 @@
-
-        <div class="d-flex justify-content-center" >
+<div class="d-flex">
         <?php
         $i = 0;
-        foreach ($bonnets as $id => $bonnet)
-        {
+        foreach ($bonnets as $bonnet) {
                 $i++;
-                if($i > 3){
+                if ($i > 3) {
                         break;
                 }
-        ?>
-                <div class="card m-2" style="width: 18rem;">
-                        <img src="<?= $bonnet[3];?>" class="card-img-top" alt="...">
+                ?>
+                <div class="card m-1">
+                        <img src="<?= $bonnet->getImg(); ?>" alt="">
                         <div class="card-body">
-                                <h3 class="card-title"><?= $bonnet[0]; ?> </h3>
-                                <p class="card-text"><?= $bonnet[1]." "."€"; ?> </p>
-                                <p class="card-text"><?= $bonnet[2]; ?> </p>
-                                <a href="?page=cart&id=<?= $id; ?>" class="btn btn-primary">Add to basket </a>
+                                <h3 class="card-title">
+                                        <?= $bonnet->getName(); ?>
+                                </h3>
+                                <p class="card-text">
+                                        <?= $bonnet->getPrice() . " " . "€"; ?>
+                                </p>
+                                <p class="card-text">
+                                        <?= $bonnet->getDescription(); ?>
+                                </p>
+                                <a href="?page=cart&id=<?= $i; ?>" class="btn btn-primary">Add to basket </a>
                         </div>
                 </div>
-        <?php     
+                <?php
         }
         ?>
-        </div> 
-        <div class="d-flex justify-content-center">
-                <a href="?page=list" class="btn btn-primary">All produits</a>
-        </div>
+</div>
+<div>
+        <a href="?page=list" class="btn btn-primary">All produits</a>
+</div>

@@ -34,10 +34,19 @@ if (!isset($pageName)) {
         .coloB {
             color: blue;
         }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        img {
+            height: 300px;
+
+        }
     </style>
 </head>
 
-<body>
+<body class="container">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -69,7 +78,7 @@ if (!isset($pageName)) {
                         <li class="nav-item">
                             <a class="nav-link active" href="?page=logout">Logout</a>
                         </li>
-                    <?php
+                        <?php
                     } else {
                         ?>
                         <li class="nav-item">
@@ -78,7 +87,7 @@ if (!isset($pageName)) {
                         <li class="nav-item">
                             <a class="nav-link active" href="?page=formulaire">Contact</a>
                         </li>
-                    <?php
+                        <?php
                     }
                     ?>
                     <!-- <form class="d-flex">
@@ -95,7 +104,7 @@ if (!isset($pageName)) {
         <div class="alert alert-primary" role="alert">
             You are connected!
         </div>
-    <?php
+        <?php
     }
     ?>
     <?php
@@ -104,6 +113,6 @@ if (!isset($pageName)) {
         <div class="alert alert-primary" role="alert">
             You are not connected
         </div>
-    <?php
+        <?php
     }
     ?>

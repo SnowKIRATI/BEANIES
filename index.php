@@ -1,4 +1,5 @@
 <?php
+require_once 'class/Bonnet.php';
 include_once 'includes/header.php';
 
 $pages = [

@@ -4,23 +4,24 @@ function priceHT(float $price): float
     return round($price / 1.2,2);
 }
 
-function showBonnet(int $id, array $bonnet): void 
+function showBonnet(int $id, object $bonnet): void 
 {
     ?>
     <tr> 
        <td> 
-           <?php echo $bonnet[0]; ?>
+           <!-- <img src="<?= $bonnet->getImg(); ?>" width="100%" alt=""> -->
+           <?= $bonnet->getName(); ?>
        </td>
        <td>
-            <?php echo priceHT($bonnet[1]) ." "."€"; ?>
+            <?php echo priceHT($bonnet->getPrice()) ." "."€"; ?>
        
        </td>
-       <td <?php if ($bonnet[1] <= 12) {?> class="coloV" <?php } 
+       <td <?php if ($bonnet->getPrice() <= 12) {?> class="coloV" <?php } 
            else {?> class="coloB" <?php }?> >  
-            <?php echo $bonnet[1] ." "."€"; ?>
+            <?= $bonnet->getPrice() ." "."€"; ?>
        </td>
        <td>
-           <?php echo $bonnet[2] ; 
+           <?= $bonnet->getPrice() ; 
        ?>
        </td>
 

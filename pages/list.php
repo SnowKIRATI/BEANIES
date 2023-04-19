@@ -3,7 +3,7 @@
     $pageName = "All our bonnets";
     
 ?>
-    <table>
+    <table class="table">
         <th>Bennets</th>
         <th>PriceHT</th>
         <th>Price TTC</th>
@@ -11,8 +11,8 @@
         <th>Action</th>
 
                 <?php 
-                 foreach ($bonnets as $key => $bonnet){ 
-                    showBonnet($key, $bonnet);
+                 foreach ($bonnets as $id => $bonnet){ 
+                    showBonnet($id, $bonnet);
                   } ?>
     </table>
     
