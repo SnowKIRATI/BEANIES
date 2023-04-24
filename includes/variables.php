@@ -2,6 +2,7 @@
 $passwordCorrect = 'hello';
 $description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a leo diam. Quisque lorem orci, accumsan quis dolor sed, gravida.";
 
+
 // Table de objects dans un class
 // Order de object is not important because we gave them the class
 $bonnets = [
@@ -9,23 +10,33 @@ $bonnets = [
         ->setName("Bonnet en laine")
         ->setImg("img/fbonnet.webp")
         ->setPrice(10)
-        ->setDescription($description),
+        ->setDescription($description)
+        ->setSize(['S','L'])
+        ->setMaterial(["Soie"]),
     (new Bonnet())
         ->setName("Bonnet en laine bio")
         ->setPrice(14)
         ->setImg("https://img.ltwebstatic.com/images3_pi/2022/06/02/1654148169d80348aa9b40ae1768ef1eb5dc88c3ab_thumbnail_600x.webp")
-        ->setDescription($description),
+        ->setDescription($description)
+        ->setSize(['M','S'])
+        ->setMaterial(["Laine"]),
     (new Bonnet())
         ->setName("Bonnet en laine et cachemire")
-        ->setPrice(10)
+        ->setPrice(8)
         ->setImg("img/hbonnet.webp")
-        ->setDescription($description),
+        ->setDescription($description)
+        ->setSize(['S','XL','XS'])
+        ->setMaterial(["Coton"]),
     (new Bonnet())
         ->setName("Bonnet arc-en-ciel")
-        ->setPrice(10)
+        ->setPrice(19)
         ->setImg("https://www.montparel.com/12175-large_default/beechfield-bf045-bonnet-avec-rabat.jpg")
-        ->setDescription($description),
+        ->setDescription($description)
+        ->setSize(['M','L','XL'])
+        ->setMaterial(["Cachemire"]),
 ];
+
+
 
 // Table de object 
 // Order de object is very important, start from 0,1,2,3...

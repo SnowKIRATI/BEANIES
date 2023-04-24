@@ -9,7 +9,6 @@ function showBonnet(int $id, object $bonnet): void
     ?>
     <tr> 
        <td> 
-           <!-- <img src="<?= $bonnet->getImg(); ?>" width="100%" alt=""> -->
            <?= $bonnet->getName(); ?>
        </td>
        <td>
@@ -21,7 +20,7 @@ function showBonnet(int $id, object $bonnet): void
             <?= $bonnet->getPrice() ." "."€"; ?>
        </td>
        <td>
-           <?= $bonnet->getPrice() ; 
+           <?= $bonnet->getDescription() ; 
        ?>
        </td>
 

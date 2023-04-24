@@ -1,13 +1,28 @@
 <?php
-
-class Bonnet 
+class Bonnet
 {
+    public const AVAILABLE_SIZES =
+        [
+            'XS',
+            'S',
+            'M',
+            'L',
+            'XL',
+        ];
+    public const AVAILABLE_MATERIAL =
+        [
+            'Cachemire',
+            'Coton',
+            'Laine',
+            'Soie',
+        ];
+
     protected string $name;
     protected float $price;
     protected string $description;
     protected string $img;
-    protected string $size;
-    protected string $material;
+    protected array $size;
+    protected array $material;
 
     // Name
     public function getName(): string
@@ -54,27 +69,27 @@ class Bonnet
     }
 
     // Size
-    public function getSize(): string
+    public function getSize(): array
     {
         return $this->size;
     }
-    public function setSize(string $size): self
+    public function setSize(array $size): self
     {
         $this->size = $size;
         return $this;
     }
 
     // Material
-    public function getMaterial(): string
+    public function getMaterial(): array
     {
         return $this->material;
     }
-    public function setMaterial(string $material): self
+    public function setMaterial(array $material): self
     {
         $this->material = $material;
         return $this;
     }
-    
+
 
 
 }
