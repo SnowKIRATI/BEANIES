@@ -1,27 +1,8 @@
 <?php
-$wrong = [];
 
-if (isset($_POST['email'])) {
-    $email = ($_POST['email']);
-    $message = ($_POST['message']);
+$contact = new Contact($_POST);
 
-    if (empty($email)) {
-        $wrong[] = 'Email empty, please add your email.';
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $wrong[] = 'Incorrect email';
-    }
-    if (empty($message)) {
-        $wrong[] = 'Please write some texts';
-    }
-    if (empty($wrong)) {
-        $_SESSION['email'] = $_POST['email'];
-    }
-
-}
-?>
-<?php
-foreach ($wrong as $wrong) {
-
+foreach ($contact->getWrong() as $wrong) {
     ?>
     <div class="alert alert-danger" role="alert">
         <?= $wrong; ?>
@@ -29,8 +10,22 @@ foreach ($wrong as $wrong) {
     <?php
 }
 ?>
+<?php
+if (!empty($_POST) && empty($contact->getWrong())) {
+    $_SESSION['email'] = $_POST['email'];
+    ?>
+    <div class="alert alert-success" role="alert">
+        Your message has been sent
+    </div>
+    <?php
+}
+?>
 <form action="" method="post">
 
+    <div class="mb-3">
+        <label for="subject" class="form-label">Sujet</label>
+        <input type="text" class="form-control" id="subject" name="subject">
+    </div>
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="text" class="form-control" id="email" name="email">

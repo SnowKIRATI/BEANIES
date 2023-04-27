@@ -1,59 +1,26 @@
 <?php
 
-// if (isset($_GET['id'])){
-//     $_SESSION['cart'][$_GET['id']]++;
-// }
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = [];
-}
-
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $cart = $_SESSION['cart'];
-
-    if (!isset($cart[$id])) {
-        $cart[$id] = 0;
-    }
-
-    $mode = 'add';
-    if (isset($_GET['mode'])) {
-        $mode = $_GET['mode'];
-    }
-
-    if ($mode == 'minus') {
-        $cart[$id]--;
-        if ($cart[$id] <= 0) {
-            unset($cart[$id]);
-        }
-    } else {
-        $cart[$id]++;
-    }
-
-    $empty = 'clean';
-    if (isset($_GET['empty'])){
-        $cart=[];
-    }
-
-    $_SESSION['cart'] = $cart;
-}
+$cart = new Cart($_GET);
 ?>
 <table class="table">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price per pice</th>
-            <th>Quantity</th>
-            <th>Price</th>
-        </tr>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price per pice</th>
+        <th>Quantity</th>
+        <th>Total</th>
+    </tr>
     <tbody>
         <?php
 
         $total = 0.0;
         $quantity = 0.0;
-        foreach ($_SESSION['cart'] as $id => $quantity) {
+        $basket = $cart->getBasket();
+        foreach ($basket as $id => $quantity) {
             $bonnet = $bonnets[$id];
             $price = $bonnet->getPrice() * $quantity;
             $total += $price;
+
 
             ?>
             <tr>
@@ -73,7 +40,7 @@ if (isset($_GET['id'])) {
                     <a href="?page=cart&id=<?= $id; ?>">+</a>
                 </td>
                 <td>
-                    <?= number_format($bonnet->getPrice(), 2, ',', ''); ?>€
+                    <?= number_format($bonnet->getPrice() * $quantity, 2, ',', ''); ?>€
                 </td>
             </tr>
             <?php
@@ -90,7 +57,7 @@ if (isset($_GET['id'])) {
     </tbody>
 </table>
 <div>
-        <a href="?page=cart&id=<?= $id; ?>&empty=clean" class="btn btn-primary">Empty Basket</a>
+    <a href="?page=cart&empty=clean" class="btn btn-primary">Empty Basket</a>
 </div>
 
 <!-- // var_dump($cart);

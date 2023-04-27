@@ -1,4 +1,5 @@
 <?php
+$maxPrice = null;
 
 if (!empty($_POST)) {
     if (!empty($_POST['size'])) {
@@ -35,7 +36,13 @@ $pageName = "All our bonnets";
         <option value=""> Select your size</option>
         <?php
         foreach (Bonnet::AVAILABLE_SIZES as $key => $size) {
-            echo '<option value="' . $size . '">' . $size . '</option>';
+            if (isset($_POST['size']) && $_POST['size'] == $size) {
+
+                echo '<option value="' . $size . '" selected>' . $size . '</option>';
+            } else {
+
+                echo '<option value="' . $size . '">' . $size . '</option>';
+            }
         }
         ?>
     </select>
@@ -45,17 +52,25 @@ $pageName = "All our bonnets";
         <option value=""> Select material</option>
         <?php
         foreach (Bonnet::AVAILABLE_MATERIAL as $key => $material) {
-            echo '<option value="' . $material . '">' . $material . '</option>';
+            if (isset($_POST['material']) && $_POST['material'] == $material) {
+
+                echo '<option value="' . $material . '" selected>' . $material . '</option>';
+            } else {
+
+                echo '<option value="' . $material . '">' . $material . '</option>';
+            }
         }
         ?>
     </select>
     <label for="minPrice" maxlength="4" size="4">Minimum price:</label>
-    <input type="number" name="minPrice" value="<?= $minPrice; ?>">
+    <input type="number" name="minPrice" value="<?php if (isset($_POST['minPrice'])) {
+        echo $_POST['minPrice'];
+    } ?>">
 
     <label for="maxPrice">Maximum price:</label>
     <input type="number" name="maxPrice" value="<?= $maxPrice; ?>">
 
-    <button type="submit">Let's go!</button>
+    <button type="submit">Let's go!</button><br><br>
 </form>
 <table class="table">
     <th>Bennets</th>
